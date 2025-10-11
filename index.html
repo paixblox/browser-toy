@@ -2,94 +2,248 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Paixblox — Offline AI Proof (Investor Intro)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paixblox – ROI</title>
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;line-height:1.6;color:#1f2937;background:#f8f9fb;overflow-x:hidden}
-    .wrap{max-width:1100px;margin:0 auto;padding:96px 20px 36px}
-    .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(248,249,251,.95);border-bottom:1px solid rgba(0,0,0,.08);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.25rem}
-    .logo{font-weight:800;letter-spacing:-.02em;color:#4A90E2}
-    .badge{background:rgba(74,144,226,.12);color:#357ABD;border:1px solid rgba(74,144,226,.35);padding:.35rem .7rem;border-radius:999px;font-size:.85rem}
-    .hero{background:linear-gradient(135deg,#4A90E2 0%,#357ABD 100%);color:#fff;border-radius:18px;padding:28px 24px;margin-bottom:18px;box-shadow:0 10px 28px rgba(2,6,23,.12)}
-    .hero h1{font-size:clamp(1.9rem,4.8vw,3rem);line-height:1.1;margin-bottom:.35rem;font-weight:800}
-    .hero .subtitle{font-size:clamp(1rem,2.4vw,1.25rem);opacity:.95}
-    .hero .tagline{font-size:clamp(1.05rem,2.6vw,1.35rem);color:#FDB94E;font-weight:700;margin:.55rem 0 1rem}
-    .cta-row{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:.5rem}
-    .btn{border:0;border-radius:10px;padding:.85rem 1.15rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}
-    .btn-primary{background:#FDB94E;color:#1f2937}
-    .btn-primary:hover{filter:brightness(.95);transform:translateY(-1px)}
-    .btn-ghost{background:rgba(255,255,255,.18);color:#fff;border:2px solid rgba(255,255,255,.35)}
-    .btn-ghost:hover{background:rgba(255,255,255,.1)}
-    .video-wrap{position:relative;width:100%;max-width:920px;margin:14px auto 4px}
-    .video-16x9{position:relative;width:100%;padding-top:56.25%;border-radius:12px;overflow:hidden;box-shadow:0 10px 28px rgba(2,6,23,.12);border:1px solid #e5ecf6;background:#000}
-    .video-16x9 iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-    .section{margin-top:26px}
-    .section-title{font-size:clamp(1.4rem,3.4vw,2.1rem);font-weight:800;margin-bottom:.5rem;color:#0f172a}
-    .section-kicker{color:#64748b;margin-bottom:1rem}
-    .grid{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .card{background:#fff;border:1px solid #e5ecf6;border-radius:16px;padding:1.15rem;box-shadow:0 6px 22px rgba(2,6,23,.06)}
-    .card h3{font-size:1.05rem;color:#4A90E2;margin-bottom:.35rem}
-    .card p{color:#334155}
-    .callout{background:#fff;border:2px solid #4A90E2;border-radius:16px;padding:1.15rem;margin-top:1rem;box-shadow:0 6px 22px rgba(2,6,23,.08)}
-    .callout strong{color:#4A90E2}
-    .footer{color:#6b7280;text-align:center;margin-top:24px;font-size:.9rem}
+    :root { --brand:#4A90E2; --brand2:#357ABD; --accent:#FDB94E; --ink:#0f172a; --muted:#e2e8f0; --bg:#f8fafc; }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--ink); background:var(--bg); }
+
+    /* Layout containers */
+    .wrap{ max-width:1200px; margin:0 auto; padding:0 22px 56px; }
+    .wrap-tight{ max-width:1200px; margin:0 auto; padding:0 22px; }
+
+    /* Full-bleed helper to let background span full viewport width while the content stays centered */
+    .fullbleed{ position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; width:100vw; }
+
+    header{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 22px; position:sticky; top:0; backdrop-filter: blur(6px); background:rgba(248,250,252,.85); border-bottom:1px solid #e2e8f0; z-index:10;}
+    .logo{ font-weight:800; letter-spacing:-.02em; color:var(--brand); font-size:20px;}
+    .badge{ font-size:12px; padding:6px 10px; border-radius:999px; background:rgba(74,144,226,.08); color:#2563eb; border:1px solid rgba(37,99,235,.25); }
+
+    h1{ font-size: clamp(26px, 4.5vw, 42px); margin:0 0 12px; }
+    h2{ font-size: clamp(20px, 3.6vw, 28px); margin:0; }
+    .lead{ color:#f1f5f9; max-width:900px; }
+
+    /* HERO TOP — full-bleed blue band that runs across the entire top and down the sides */
+    .hero-band{ background: linear-gradient(135deg, var(--brand) 0%, var(--brand2) 100%); color:#fff; padding:68px 0 40px; }
+    .hero{ display:grid; grid-template-columns: 1fr; gap:24px; align-items:center; }
+
+    .kicker{ color:#475569; font-weight:700; text-transform:uppercase; letter-spacing:.08em; font-size:12px; }
+    .kicker-light{ color:#e2e8f0; font-weight:700; text-transform:uppercase; letter-spacing:.08em; font-size:12px; }
+
+    .grid{ display:grid; gap:16px; grid-template-columns: repeat(3, minmax(220px, 1fr)); }
+    .grid.equal{ align-items:stretch; }
+    .grid.equal > .card{ display:flex; flex-direction:column; height:100%; }
+
+    .card{ background:#fff; border:1px solid #e2e8f0; border-radius:16px; box-shadow:0 8px 28px rgba(2,6,23,.06); padding:16px; }
+    .card.glass{ background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.18); box-shadow:0 8px 28px rgba(2,6,23,.12) inset; }
+
+    .stat{ font-size:28px; font-weight:800; color:var(--brand); }
+    .stat.light{ color:#fff; }
+    .tiny{ font-size:12px; color:#475569; }
+    .tiny-light{ font-size:12px; color:#e2e8f0; }
+
+    .cta{ display:flex; gap:10px; margin-top:16px; flex-wrap:wrap; }
+    .btn{ border:0; border-radius:10px; padding:12px 16px; font-weight:700; cursor:pointer; text-decoration:none; display:inline-block; }
+    .btn-primary{ background:var(--accent); color:#1f2937; }
+    .btn-ghost{ background:transparent; color:#fff; border:2px solid rgba(255,255,255,.35); }
+
+    /* Standalone, larger video section placed BELOW the hero for immediate, comfortable viewing */
+    .video-section{ padding:28px 0 8px; }
+    .video-frame{ aspect-ratio:16/9; width:100%; max-width:1200px; margin:0 auto; border-radius:16px; overflow:hidden; border:1px solid #e2e8f0; box-shadow:0 14px 40px rgba(2,6,23,.2); background:#000; }
+    iframe{ width:100%; height:100%; border:0; display:block; }
+
+    .section{ padding:36px 0 0; }
+    .note{ background: #fff7ed; border-left:4px solid #f59e0b; padding:12px 14px; border-radius:10px; color:#7c2d12; }
+    footer{ margin-top:28px; color:#64748b; font-size:12px; padding:0 22px 28px; }
+
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr; }
+      .lead{ color:#e5e7eb; }
+      .video-section{ padding-top:18px; }
+    }
+    table{ width:100%; border-collapse:separate; border-spacing:0; }
+    th, td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--muted); }
+    thead th{ background:#f1f5f9; position:sticky; top:0; z-index:1; }
   </style>
 </head>
 <body>
-  <header class="header">
+  <!-- Sticky header stays above the full-bleed band -->
+  <header class="wrap-tight">
     <div class="logo">PAIXBLOX</div>
-    <div class="badge">Veteran Owned</div>
+    <div class="badge">🇺🇸 Veteran‑Owned</div>
   </header>
 
-  <main class="wrap">
-    <section class="hero">
-      <h1>Do More. Own Everything.</h1>
-      <div class="subtitle">Fast, private, and fully in your control — no cloud required.</div>
-      <div class="tagline">Speed • Privacy • Independence</div>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#proof">See the Proof</a>
-        <a class="btn btn-ghost" href="#why">Why It Matters</a>
+  <!-- FULL‑BLEED HERO BAND -->
+  <section class="hero-band fullbleed" aria-label="Hero">
+    <div class="wrap-tight hero">
+      <div>
+        <div class="kicker-light">Enterprise ROI</div>
+        <h1>Run Enterprise Workloads <em>Without the Cloud</em></h1>
+        <p class="lead">Paixblox executes massive jobs locally — instant, offline, and secure. Replace cloud dependency with private, on‑device performance and keep your IP in your own four walls.</p>
+
+        <!-- Glass stats cards kept perfectly aligned -->
+        <div class="grid equal" style="margin:18px 0 8px;">
+          <div class="card glass">
+            <div class="kicker-light">Proven demo</div>
+            <div class="stat light">3M rows → 5s</div>
+            <div class="tiny-light">Generated, verified, exported fully offline on standard hardware.</div>
+          </div>
+          <div class="card glass">
+            <div class="kicker-light">Deployment speed</div>
+            <div class="stat light">Hours, not weeks</div>
+            <div class="tiny-light">Single‑file delivery. Zero backend provisioning.</div>
+          </div>
+          <div class="card glass">
+            <div class="kicker-light">Vendor lock‑in</div>
+            <div class="stat light">0 egress fees</div>
+            <div class="tiny-light">No routine cloud compute or data egress costs.</div>
+          </div>
+        </div>
+
+        <div class="cta">
+          <a class="btn btn-primary" href="#roi">See ROI</a>
+          <a class="btn btn-ghost" href="#proof">Watch Demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LARGE, CENTERED VIDEO BELOW HERO -->
+  <section id="proof" class="video-section wrap-tight" aria-label="Demo Video">
+    <div class="video-frame" role="region" aria-label="Paixblox demo video">
+      <iframe
+        src="https://www.youtube.com/embed/aWcJ5GJ_e44?rel=0&modestbranding=1&playsinline=1"
+        title="Paixblox Demo Video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        playsinline
+      ></iframe>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT WRAP -->
+  <div class="wrap">
+    <!-- ROI Section -->
+    <section id="roi" class="section">
+      <h2>ROI Snapshot (Conservative)</h2>
+      <p class="tiny" style="margin:4px 0 10px;">Modeled for a mid‑size enterprise replacing cloud‑hosted processing with Paixblox local execution. Assumes 50–70% workload eligibility.</p>
+      <div class="card">
+        <table aria-label="ROI comparison">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Traditional Cloud</th>
+              <th>With Paixblox</th>
+              <th>Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Deployment cycle</td>
+              <td>3–6 weeks</td>
+              <td>&lt; 24 hours</td>
+              <td>~20× faster time‑to‑value</td>
+            </tr>
+            <tr>
+              <td>Data processing cost</td>
+              <td>$1.00 / GB</td>
+              <td>$0.05 / GB (local)</td>
+              <td>≈ 95% lower unit cost</td>
+            </tr>
+            <tr>
+              <td>Security &amp; compliance</td>
+              <td>$1,000,000 / yr</td>
+              <td>$150,000 / yr</td>
+              <td>≈ 85% reduction</td>
+            </tr>
+            <tr>
+              <td>Data egress &amp; lock‑in</td>
+              <td>$200–600k / yr</td>
+              <td>$0</td>
+              <td>Eliminated</td>
+            </tr>
+            <tr>
+              <td>Downtime exposure</td>
+              <td>Network dependent</td>
+              <td>Offline‑capable</td>
+              <td>Business continuity</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid equal" style="margin-top:14px;">
+        <div class="card">
+          <div class="kicker">Annual savings (typical)</div>
+          <div class="stat">$2.5M–$4.2M</div>
+          <div class="tiny">Across compute, egress, compliance, and ops time.</div>
+        </div>
+        <div class="card">
+          <div class="kicker">Break‑even on license</div>
+          <div class="stat">&lt; 3 months</div>
+          <div class="tiny">On a $500k exclusive pilot.</div>
+        </div>
+        <div class="card">
+          <div class="kicker">Proven today</div>
+          <div class="stat">3 live apps</div>
+          <div class="tiny">Demonstrating offline generation, verification, export.</div>
+        </div>
+      </div>
+
+      <p class="note" style="margin-top:12px;">There is no apples‑to‑apples benchmark — Paixblox is the first of its kind — but the capability is demonstrated in live recordings and reproducible runs. Numbers are intentionally conservative and can be tailored to your estate.</p>
+    </section>
+
+    <!-- Offer -->
+    <section id="offer" class="section">
+      <h2>Engagement Options</h2>
+      <div class="card">
+        <table aria-label="Commercial options">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Terms</th>
+              <th>Best for</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Exclusive Pilot</td>
+              <td>$500k for 6‑month field‑of‑use exclusivity + success metrics</td>
+              <td>First‑mover teams proving ROI fast</td>
+            </tr>
+            <tr>
+              <td>Royalty License</td>
+              <td>3–5% of deployment revenue (tiered)</td>
+              <td>Scale‑out with aligned upside</td>
+            </tr>
+            <tr>
+              <td>Acquisition Option</td>
+              <td>$5–10M pre‑set option window</td>
+              <td>Organizations requiring total control</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
-    <section id="proof" class="section" aria-labelledby="proof-title" style="text-align:center;">
-      <h2 class="section-title" id="proof-title">Live Proof</h2>
-      <p class="section-kicker">3M+ records generated & exported in ~5 seconds — offline — on standard hardware.</p>
-      <div class="video-wrap">
-        <div class="video-16x9">
-          <iframe src="https://www.youtube.com/embed/aWcJ5GJ_e44?rel=0&modestbranding=1&playsinline=1" title="Paixblox Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <section id="cta" class="section">
+      <div class="card" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <div>
+          <div class="kicker">Next step</div>
+          <h3 style="margin:4px 0 6px;">Bring one workload. We’ll run it offline in minutes.</h3>
+          <p class="tiny">Includes cryptographic receipt + timestamped proof for your audit trail.</p>
+        </div>
+        <div>
+          <a class="btn btn-primary" href="mailto:ecomill@paixblox.com">Request Exclusive Pilot</a>
+          <a class="btn btn-ghost" href="#proof" style="border-color:#e2e8f0; color:#0f172a;">Rewatch Demo</a>
         </div>
       </div>
     </section>
+  </div>
 
-    <section id="why" class="section" aria-labelledby="why-title">
-      <h2 class="section-title" id="why-title">What’s Proven — Today</h2>
-      <p class="section-kicker">These results come directly from screen‑recorded runs and independent technical review.</p>
-      <div class="grid">
-        <div class="card">
-          <h3>Offline, at Scale</h3>
-          <p>End‑to‑end generation and export completes locally in seconds with <strong>zero network activity</strong>. Works on standard consumer devices running Chrome‑class browsers.</p>
-        </div>
-        <div class="card">
-          <h3>Browser≠Toy — Native‑Class Throughput</h3>
-          <p>Demonstrated export of <strong>millions of records in ~5s</strong> exceeds what conventional JavaScript/JSON pipelines achieve. The workload runs inside the browser UI while avoiding typical main‑thread stalls.</p>
-        </div>
-        <div class="card">
-          <h3>Beyond JS/GC Bottlenecks</h3>
-          <p>Independent analysis confirms that <em>standard</em> browser architectures (JSON.stringify, large heap objects, GC pauses) <strong>cannot</strong> hit these timings — implying a different, validated execution model for serialization and I/O.</p>
-        </div>
-
-    <section class="section" style="text-align:center">
-      <h2 class="section-title">See It On Your Hardware</h2>
-      <p class="section-kicker">One file. Open in a browser. Fully offline.</p>
-      <div class="cta-row" style="justify-content:center">
-        <a class="btn btn-primary" href="mailto:ecomill@paixblox.com">Schedule a 15‑minute walkthrough</a>
-        <a class="btn btn-ghost" href="#proof">Replay demo</a>
-      </div>
-    </section>
-
-    <div class="footer">© 2025 Paixblox — Veteran Owned</div>
-  </main>
+  <footer class="section">
+    © 2025 Paixblox. All rights reserved • 🇺🇸 Veteran‑Owned • Contact: <a href="mailto:ecomill@paixblox.com">ecomill@paixblox.com</a>
+  </footer>
 </body>
 </html>
